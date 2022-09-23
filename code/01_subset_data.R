@@ -10,6 +10,10 @@
 source("code/functions/subset_mobility_data.R")
 
 # use the subset_mobility_data function to subset out just state rows
-subset_mobility_data(input_data_file =
-                       "data/raw_data/applemobilitytrends-2022-04-12.csv",
-                     state_to_subset = "ENTER_STATE_HERE")
+for (state_to_subset in c("California","Utah","Ohio","New York","Alaska")) {
+  print(paste("The csv for", state_to_subset, "is being subsetted"))
+  subset_mobility_data(input_data_file =
+                         "data/raw_data/applemobilitytrends-2022-04-12.csv",
+                       state_to_subset)
+
+}
