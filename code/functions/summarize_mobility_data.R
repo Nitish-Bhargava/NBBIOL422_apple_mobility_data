@@ -23,6 +23,11 @@ summarized_cities_counties <- state_data %>%
   group_by(geo_type, transportation_type) %>%
   tally()
 
+# defensive code
+if(nrow(summarized_cities_counties) == 0) {
+  stop("There is no file with that name. Did you make a typo?")
+}
+
 # Write out the summarized table to a csv in the output directory
 write.csv(summarized_cities_counties,
           paste0("output/summarized_",

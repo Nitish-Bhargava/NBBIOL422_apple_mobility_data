@@ -15,5 +15,4 @@ for (state_to_subset in c("California","Utah","Ohio","New York","Alaska")) {
   subset_mobility_data(input_data_file =
                          "data/raw_data/applemobilitytrends-2022-04-12.csv",
                        state_to_subset)
-
 }
