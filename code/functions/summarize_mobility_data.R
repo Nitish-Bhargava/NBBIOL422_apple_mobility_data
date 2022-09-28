@@ -11,9 +11,12 @@ library("dplyr")
 # function to summarize data from csv files
   summarize_mobility_data <- function(state_to_subset) {
 
+# Get rid of spaces
+state_no_spaces <- gsub(state_to_subset, pattern = " ", replacement = "_")
+
 # load in file
-state_data <- read.csv(paste0("output/",
-                              state_to_subset,
+state_data <- readr::read_csv(paste0("output/",
+                              state_no_spaces,
                               "_subset_applemobilitytrends-2022-04-12.csv"))
 
 # tally the count of cities and counties in the state with mobility data
@@ -29,9 +32,9 @@ if(nrow(summarized_cities_counties) == 0) {
 }
 
 # Write out the summarized table to a csv in the output directory
-write.csv(summarized_cities_counties,
-          paste0("output/summarized_",
-                 state_to_subset,
-                 "_mobility_data_2022-04-12.csv"))
+readr::write_csv(summarized_cities_counties,
+                 paste0("output/summarized_",
+                        state_no_spaces,
+                        "_mobility_data_2022-04-12.csv"))
   }
 
