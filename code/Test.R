@@ -7,14 +7,13 @@ library("dplyr")
 source("code/functions/subset_mobility_data.R")
 source("code/functions/summarize_mobility_data.R")
 
+# Enter list of states in c("state", ...)
+list_of_states <- c("California","Utah","Ohio","New York","Alaska")
+
 # Loop with both subsetting and summarizing
-for (state_to_subset in c("California","Utah","Ohio","New York","Alaska")) {
-  # Print of which state is being subsetted and summarized
-  print(paste("The csv for", state_to_subset,
-              "is being subsetted and summarized"))
+for (state_to_subset in list_of_states) {
   # Subsetting of data
-  subset_mobility_data(input_data_file =
-                         "data/raw_data/applemobilitytrends-2022-04-12.csv",
+  subset_mobility_data("data/raw_data/applemobilitytrends-2022-04-12.csv",
                        state_to_subset)
   # Summarizing of data
   summarize_mobility_data(state_to_subset)

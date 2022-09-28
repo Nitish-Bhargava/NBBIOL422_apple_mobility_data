@@ -12,7 +12,7 @@ library("dplyr")
 source("code/functions/summarize_mobility_data.R")
 
 # for loop that allows for multiple files to be used
-for (state_to_subset in c("California","Utah","Ohio","New York","Alaska")) {
+for (state_to_subset in c("California", "Utah", "Ohio", "New York", "Alaska")) {
   summarize_mobility_data(state_to_subset)
 }
 
