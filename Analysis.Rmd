@@ -1,0 +1,43 @@
+---
+title: "Learning_RMarkdown"
+author: "Nitish Bhargava"
+date: "`r Sys.Date()`"
+output: html_document
+bibliography: references.bib
+---
+#Apple Mobility Data analysis
+
+## Setup 
+
+This report will use dplyr [@dplyr], ggplot2 [@ggplot2], readr [@readr], and 
+tidyr [@tidyr]
+
+```{r load in libaries}
+# load library
+library("dplyr")
+library("readr")
+library("tidyr")
+library("ggplot2")
+```
+
+```{r Source functions}
+# Source Functions
+source("code/functions/subset_mobility_data.R")
+source("code/functions/make_data_longer.R")
+```
+
+```{r for loop for analysis}
+# state_to_subset <- "New York"
+
+for (state_to_subset in c("California")) {
+  
+  # Subsetting of data
+  subsetted <- subset_mobility_data("data/raw_data/applemobilitytrends-2022-04-12.csv",
+                       state_to_subset)
+  
+  # Make data longer
+  make_data_long(subsetted)
+}
+```
+
+# Sources Cited

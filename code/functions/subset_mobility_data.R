@@ -24,10 +24,7 @@ subset_mobility_data <- function(input_data_file, state_to_subset) {
     stop("There is no state by that name. Did you make a typo")
     }
 
-  # write out the subsetted data to a csv file in the output directory
-  readr::write_csv(x = state_dataset,
-                   file = paste0("output/",
-                                 state_no_spaces,
-                                 "_subset_",
-                                 basename(input_data_file)))
+# Return code
+  return(state_dataset)
+
 }
