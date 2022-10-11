@@ -8,7 +8,7 @@
 library("tidyr")
 library("readr")
 
-make_data_long <- function(subsetted) {
+make_data_long <- function(subsetted, state_to_subset) {
 
   # Use tidyr pivot_longer function to make file longer
   file_to_make_longer2 <- tidyr::pivot_longer(

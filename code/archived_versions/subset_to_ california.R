@@ -10,7 +10,7 @@
 full_dataset <- read.csv("data/raw_data/applemobilitytrends-2022-04-12.csv")
 
 # subset data to just California
-ca_dataset <- full_dataset[full_dataset$sub.region == "California",]
+ca_dataset <- full_dataset[full_dataset$sub.region == "California", ]
 
 # write out the subsetted data to a csv file in the output directory
 write.csv(ca_dataset, "output/apple_mobility_ca_subset_2022-04-12.csv",

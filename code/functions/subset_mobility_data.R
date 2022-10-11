@@ -13,7 +13,7 @@ subset_mobility_data <- function(input_data_file, state_to_subset) {
 
   # subset data to a selected state
   state_dataset <- full_dataset %>%
-    dplyr::filter(`sub-region` == state_to_subset)
+    dplyr::filter(`sub_region` == state_to_subset)
 
   # Get rid of spaces
   state_no_spaces <- gsub(state_to_subset, pattern = " ", replacement = "_")
@@ -22,7 +22,15 @@ subset_mobility_data <- function(input_data_file, state_to_subset) {
   # subsetted dataset has 0 rows
   if (nrow(state_dataset) == 0) {
     stop("There is no state by that name. Did you make a typo")
-    }
+
+  }
+
+  # write csv
+  readr::write_csv(state_dataset, paste0("output/",
+                                        state_no_spaces,
+                                        "_subset_data",
+                                        "_applemobilitytrends-",
+                                        "2022-04-12.csv"))
 
 # Return code
   return(state_dataset)

@@ -15,4 +15,3 @@ source("code/functions/summarize_mobility_data.R")
 for (state_to_subset in c("California", "Utah", "Ohio", "New York", "Alaska")) {
   summarize_mobility_data(state_to_subset)
 }
-
