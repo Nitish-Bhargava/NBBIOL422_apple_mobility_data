@@ -1,43 +1,119 @@
 ---
-title: "Learning_RMarkdown"
+title: "Analysis of COVID-era Apple Mobility Data"
 author: "Nitish Bhargava"
 date: "`r Sys.Date()`"
-output: html_document
+output:
 bibliography: references.bib
 ---
-#Apple Mobility Data analysis
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = TRUE)
+```
 
 ## Setup 
 
-This report will use dplyr [@dplyr], ggplot2 [@ggplot2], readr [@readr], and 
-tidyr [@tidyr]
+```{r set-prameters}
+# set the state to work with
+state_to_analyze <- "New York"
 
-```{r load in libaries}
+# sanitizing the state name for output files
+state_no_spaces <- gsub(state_to_analyze, pattern = " ", replacement = "_")
+
+# set the name of the global data file to use
+global_file_to_process <- "data/raw_data/applemobilitytrends-2022-04-12.csv"
+```
+
+```{r load in packages and functions}
 # load library
 library("dplyr")
 library("readr")
 library("tidyr")
 library("ggplot2")
-```
-
-```{r Source functions}
+library("lubridate")
+library("devtools")
 # Source Functions
 source("code/functions/subset_mobility_data.R")
 source("code/functions/make_data_longer.R")
+source("code/functions/summarize_mobility_data.R")
 ```
 
-```{r for loop for analysis}
-# state_to_subset <- "New York"
+# Background and Objectives
 
-for (state_to_subset in c("California")) {
-  
-  # Subsetting of data
-  subsetted <- subset_mobility_data("data/raw_data/applemobilitytrends-2022-04-12.csv",
-                       state_to_subset)
-  
-  # Make data longer
-  make_data_long(subsetted)
-}
+This report will use dplyr [@dplyr], ggplot2 [@ggplot2], readr [@readr], and tidyr [@tidyr] to analyze apple maps mobility data from the time before the COVID pandemic through the initial shutdowns and the continuing changes over the course of the year. 
+
+The goal will be to create a subset to a particular state, tally up the number of cities and counties in that state with mobility data, and then make several plots to visualize those data subsets.
+
+The state that this document will analyze is `r state_to_analyze`
+
+```{r state-subset}
+# subset out to the chosen state using the variable set above
+state_subset <- subset_mobility_data(global_file_to_process, state_to_analyze)
+
 ```
+
+```{r make-subset-long}
+# convert the subsetted state data from wide to long
+long_subset <- make_data_long(state_subset, state_to_analyze)
+```
+
+```{r summarize-data}
+# summarize number of cities and counties in the state that have data
+summarized_data <- summarize_mobility_data(state_no_spaces)
+```
+
+## Figures
+
+```{r}
+# create a grouped bar plot of the tallied data to include in the knitted
+# document, and save that figure to the output/figures directory as a png
+summarized_plot <- ggplot(data = summarized_data,
+                          aes(x = geo_type,
+                              y = n,
+                              fill = transportation_type)) +
+  geom_col(position = position_dodge()) +
+  labs(title = paste("Number of cities and/or counties in",
+                     state_to_analyze,
+                     "with mobility data"),
+                     x = "Type of area",
+                     y = "Number of Area")
+ggsave(plot = summarized_plot,
+       filename = paste0("output/applemobilitytrends-2022-04-12_",
+                         state_no_spaces, "_summarized_plot.png"))
+
+summarized_plot
+```
+
+```{r plot-time-series}
+# produce a line plot of relative driving mobility across the state with
+# the date on the x axis and mean relative mobility on the y axis
+timeseries_plot <- long_subset %>%
+  filter(transportation_type == "driving") %>%
+  group_by(date) %>%
+  summarize(mean_mobility = mean(value)) %>%
+  ggplot(aes(x = lubridate::ymd(date),
+             y = mean_mobility)) +
+  geom_line() +
+  labs(title = paste("Statewide mean relative mobility driving levels in",
+                     state_to_analyze,
+                     "during COVID"),
+       x = "Date",
+       y = "Mean relative mobility")
+
+ggsave(plot = timeseries_plot,
+       filename = paste0("output/applemobilitytrends-2022-04-12_",
+                         state_no_spaces,
+                         "_timeseries_plot.png"
+                         ))
+
+timeseries_plot
+```
+
+## Session Info
+
+```{r}
+devtools::session_info()
+```
+
+
 
 # Sources Cited
