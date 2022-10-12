@@ -23,7 +23,7 @@ state_no_spaces <- gsub(state_to_analyze, pattern = " ", replacement = "_")
 global_file_to_process <- "data/raw_data/applemobilitytrends-2022-04-12.csv"
 ```
 
-```{r load in packages and functions}
+```{r load-in-packages-and-functions}
 # load library
 library("dplyr")
 library("readr")
@@ -43,7 +43,7 @@ This report will use dplyr [@dplyr], ggplot2 [@ggplot2], readr [@readr], and tid
 
 The goal will be to create a subset to a particular state, tally up the number of cities and counties in that state with mobility data, and then make several plots to visualize those data subsets.
 
-The state that this document will analyze is `r state_to_analyze`
+The state that this document will analyze is `r state_to_analyze`.
 
 ```{r state-subset}
 # subset out to the chosen state using the variable set above
@@ -63,7 +63,7 @@ summarized_data <- summarize_mobility_data(state_no_spaces)
 
 ## Figures
 
-```{r}
+```{r plot-type-and-number-of-areas}
 # create a grouped bar plot of the tallied data to include in the knitted
 # document, and save that figure to the output/figures directory as a png
 summarized_plot <- ggplot(data = summarized_data,
@@ -135,7 +135,7 @@ timeseries_plot_walking
 
 ## Session Info
 
-```{r}
+```{r session-info}
 devtools::session_info()
 ```
 
