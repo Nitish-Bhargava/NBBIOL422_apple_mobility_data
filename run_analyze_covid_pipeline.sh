@@ -17,6 +17,11 @@ then
   exit 1
 fi
 
+state=$1
+state=${state// /_}
+
 Rscript -e "rmarkdown::render('Analysis.Rmd',\
             params = list(state = '$1',\
-            data = 'data/raw_data/applemobilitytrends-2022-04-12.csv'))"
+            data = 'data/raw_data/applemobilitytrends-2022-04-12.csv'),\
+            output_dir = 'output',\
+            output_file = 'Analysis_$state')"
