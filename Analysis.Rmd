@@ -4,6 +4,9 @@ author: "Nitish Bhargava"
 date: "`r Sys.Date()`"
 output:
 bibliography: references.bib
+params:
+  state: "California"
+  data: "data/raw_data/applemobilitytrends-2022-04-12.csv"
 ---
 
 ```{r setup, include=FALSE}
@@ -14,13 +17,13 @@ knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 
 ```{r set-prameters}
 # set the state to work with
-state_to_analyze <- "New York"
+state_to_analyze <- params$state
 
 # sanitizing the state name for output files
 state_no_spaces <- gsub(state_to_analyze, pattern = " ", replacement = "_")
 
 # set the name of the global data file to use
-global_file_to_process <- "data/raw_data/applemobilitytrends-2022-04-12.csv"
+global_file_to_process <- params$data
 ```
 
 ```{r load-in-packages-and-functions}
