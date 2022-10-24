@@ -4,4 +4,5 @@
 # parameters passed in from the shell
 
 Rscript -e "rmarkdown::render('Analysis.Rmd',\
-params"
+            params = list(state = 'Ohio',\
+            data = 'data/raw_data/applemobilitytrends-2022-04-12.csv))"
