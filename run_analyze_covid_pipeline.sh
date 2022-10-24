@@ -2,8 +2,14 @@
 
 # A bash script to drive the rendering of an Rmarkdown file using some
 # parameters passed in from the shell
+# this script expects two command line parameters
+# the first should be a US state, and the second is the raw apple mobility
+# data csv file downloaded from apple.com
+
+# Nitish Bhargava
+# October 24, 2022
+# 2001nitish@gmail.com
 
 Rscript -e "rmarkdown::render('Analysis.Rmd',\
-            params = list(state = 'Ohio',\
+            params = list(state = '$1',\
             data = 'data/raw_data/applemobilitytrends-2022-04-12.csv'))"
-
