@@ -10,7 +10,7 @@
 # October 24, 2022
 # 2001nitish@gmail.com
 
-if [ $# -eq = 0 ]
+if [ $# -lt 1 ]
 then
   echo "To run this script, supply one argument:"
   echo "The name of the state to be analyzed."
