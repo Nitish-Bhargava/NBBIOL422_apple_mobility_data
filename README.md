@@ -14,8 +14,8 @@ csv files with data should appear in output
 
 ## Notes
 
-* Sept. 13 2022- code file was adapted for all states
-* Sept. 14 2022- defensive code was added to account for spelling errors or missing states
-* Sept. 22 2022- added 02_summarize_counties_cities.R that summarizes csv from 01_subset_data.R
-* Oct. 07 2022- edited function files to use dplyr and readr to correctly use data. Add Rmd to drive entire analysis
-* Oct. 27 Addition of bash script that allows for further manipulation of Rmd file.
+* 2022-09-13- code file was adapted for all states
+* 2022-09-14- defensive code was added to account for spelling errors or missing states
+* 2022-09-22- added 02_summarize_counties_cities.R that summarizes csv from 01_subset_data.R
+* 2022-10-07- edited function files to use dplyr and readr to correctly use data. Add Rmd to drive entire analysis
+* 2022-10-27- Addition of bash script that allows for further manipulation of Rmd file.
