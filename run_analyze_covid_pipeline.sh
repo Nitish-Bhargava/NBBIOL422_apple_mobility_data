@@ -12,8 +12,8 @@
 
 if [ $# -lt 1 ]
 then
-  echo "To run this script, supply one argument:"
-  echo "The name of the state to be analyzed."
+  echo "To run this script, supply two argument:"
+  echo "The name of the state to be analyzed and data file path."
   exit 1
 fi
 
