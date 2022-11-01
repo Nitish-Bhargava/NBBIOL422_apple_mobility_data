@@ -68,3 +68,73 @@
       1 Norway
       1 Kazakhstan
       1 Hungary
+ 970830 USA
+  46740 France
+  30844 Switzerland
+  23092 Slovakia
+  13937 New Zealand
+   9992 Brazil
+   6769 Mexico
+   5748 Bahrain
+   4805 South Africa
+   3562 Thailand
+   3318 Kenya
+   2127 Viet Nam
+   1335 India
+   1074 Liechtenstein
+   1064 Iran
+    642 Hong Kong
+    461 Gambia
+    459 Laos
+    391 Pakistan
+    378 Italy
+    314 Bangladesh
+    301 Djibouti
+    298 Paraguay
+    296 Peru
+    294 Mongolia
+    290 Jamaica
+    289 Malawi
+    289 Japan
+    283 Gabon
+    250 Iraq
+    236 Malaysia
+    199 Seychelles
+    171 Taiwan
+    123 Sweden
+    105 Bhutan
+     89 Dominican Republic
+     85 Uganda
+     84 Colombia
+     75 Argentina
+     67 Indonesia
+     64 Germany
+     51 China
+     40 West Bank
+     40 Myanmar
+     40 Egypt
+     39 United Kingdom
+     39 Australia
+     27 Tanzania
+     26 Russia
+     25 Philippines
+     19 Belgium
+     15 Ireland
+     15 Finland
+     13 Canada
+     12 Uzbekistan
+     11 Denmark
+     10 Palau
+      8 Turkey
+      8 Netherlands
+      8 Israel
+      5 Singapore
+      5 Chile
+      4 South Korea
+      3 Spain
+      3 Austria
+      2 Saudi Arabia
+      1 Suriname
+      1 Norway
+      1 Kazakhstan
+      1 Hungary
