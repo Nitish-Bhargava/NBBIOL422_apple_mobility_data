@@ -10,7 +10,7 @@
 # October 24, 2022
 # 2001nitish@gmail.com
 
-if [ $# -lt 1 ]
+if [ $# -eq 0 ]
 then
   echo "To run this script, supply two argument:"
   echo "The name of the state to be analyzed and data file path."
@@ -22,6 +22,6 @@ state=${state// /_}
 
 Rscript -e "rmarkdown::render('Analysis.Rmd',\
             params = list(state = '$1',\
-            data = 'data/raw_data/applemobilitytrends-2022-04-12.csv'),\
+            data = '$2'),\
             output_dir = 'output',\
             output_file = 'Analysis_$state')"
