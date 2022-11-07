@@ -16,7 +16,7 @@ if [ $# -lt 1 ]
 then
   echo "To run this script, supply three arguments:"
   echo "The name of the state to be analyzed and data file path."
-  echo "
+  echo "The tthird is the path to the seuqnce summary report text file."
   exit 1
 fi
 
