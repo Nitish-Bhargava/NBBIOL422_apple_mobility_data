@@ -18,5 +18,5 @@ bioawk -c fastx '{print ">" $name $comment}' "$1" | wc -l
 
 # Tally up numer of SARS-CoV-2 sequences in dataset from each country and sort output
 # from largest to smallest
-zgrep "isolate.*Homo" "$1" | cut -d "|" -f21 | sort | uniq -c | sort -rn >> sort_countries.txt
+zgrep ">" "$1" | cut -d "|" -f21 | sort | uniq -c | sort -rn
 
