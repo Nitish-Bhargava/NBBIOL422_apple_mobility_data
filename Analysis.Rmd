@@ -7,6 +7,8 @@ bibliography: references.bib
 params:
   state: "Utah"
   data: "data/raw_data/applemobilitytrends-2022-04-12.csv"
+  seqdata: "/blast-db/sars-cov-2-seq-data/2022-10-17_ncbi_sars-cov-2-sequences.fasta.gz"
+
 ---
 
 ```{r setup, include=FALSE}

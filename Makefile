@@ -1,4 +1,4 @@
-STATE			:=California
+STATE			:= California
 SPACE			:= $() $()
 STATE_NOSPACE		:= $(subst $(SPACE),_,$(STATE))
 REPORT			:= Analysis_$(STATE_NOSPACE).html
@@ -11,7 +11,7 @@ SEQ_SUMMARY		:= $(OUTPUT)/sort_countries.txt
 
 all: $(REPORT_PATH)
 
-$(REPORT_PATH): Analysis.Rmd references.bib $(R_FUNCTIONS) $(SEQ_SUMMARY) $(MOBILITY_DATA) run_analyze_covid_pipline.sh
+$(REPORT_PATH): Analysis.Rmd references.bib $(R_FUNCTIONS) $(SEQ_SUMMARY) $(MOBILITY_DATA) run_analyze_covid_pipeline.sh
 	bash run_analyze_covid_pipeline.sh "$(STATE)" "$(MOBILITY_DATA)" "$(SEQ_SUMMARY)"
 
 $ (SEQ_SUMMARY): code/process_sequences.sh $(SEQ_DATA)
