@@ -19,3 +19,4 @@ csv files with data should appear in output
 * 2022-09-22- added 02_summarize_counties_cities.R that summarizes csv from 01_subset_data.R
 * 2022-10-07- edited function files to use dplyr and readr to correctly use data. Add Rmd to drive entire analysis
 * 2022-10-27- Addition of bash script that allows for further manipulation of Rmd file.
+* 2022-11-08- Addition of bash script that analyses COVID-19 sequencing data and organizes by sequencing count for countries.
