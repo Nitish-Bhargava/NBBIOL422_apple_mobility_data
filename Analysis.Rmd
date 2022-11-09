@@ -44,7 +44,7 @@ source("code/functions/summarize_mobility_data.R")
 
 # Background and Objectives
 
-This report will use dplyr [@dplyr], ggplot2 [@ggplot2], readr [@readr], and tidyr [@tidyr] to analyze apple maps mobility data from the time before the COVID pandemic through the initial shutdowns and the continuing changes over the course of the year. 
+This report will use `dplyr` [@dplyr], `ggplot2` [@ggplot2], `readr` [@readr], and `tidyr` [@tidyr] to analyze apple maps mobility data from the time before the COVID pandemic through the initial shutdowns and the continuing changes over the course of the year. 
 
 The goal will be to create a subset to a particular state, tally up the number of cities and counties in that state with mobility data, and then make several plots to visualize those data subsets.
 
@@ -142,24 +142,22 @@ timeseries_plot_walking
 ```{r plot-sequence-data, fig.height=12}
 # read in the count of the sequences by country (2 columns)
 seqs_by_country <- readr::read_table(params$seqdata,
-				     col_names = c("count",
-						   "country"))
+                                     col_names = c("count", "country"))
+
 # check that we have the right number of columns
 stopifnot(ncol(seqs_by_country) == 2)
 
 # make a sideways barplot, log scale x axis, with countries on the y
 # and the counts of sequences in each on the x, sorted by count
 seq_count_plot <- ggplot(data = seqs_by_country,
-				aes(x = count,
-				    y = reorder(country, count))) +
+                         aes(x = count, y = reorder(country, count))) +
  geom_col() +
  scale_x_log10() +
  labs(title = "Count of SARS-CoV-2 sequeces per country",
       x = "Count of Sequences",
       y = "Country Name")
 
-ggsave(plot = seq_count_plot,
-	filename = "output/figures/seq_count_plot.png")
+ggsave(plot = seq_count_plot, filename = "output/figures/seq_count_plot.png")
 
 seq_count_plot
 ```

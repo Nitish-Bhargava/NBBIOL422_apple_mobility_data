@@ -12,7 +12,7 @@ set -euo pipefail
 # October 24, 2022
 # 2001nitish@gmail.com
 
-if [ $# -lt 1 ]
+if [ $# -eq 0 ]
 then
   echo "To run this script, supply three arguments:"
   echo "The name of the state to be analyzed and data file path."
