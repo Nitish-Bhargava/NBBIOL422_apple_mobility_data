@@ -1,4 +1,4 @@
-# This project is to adapt the Apple mobility data to create .csv file for any state
+# This project is to adapt the Apple mobility data to create .csv file for any state as well as seqeucning data that analyses COVID sequencing data by country.
 
 The data is available from the following URL: <https://covid19.apple.com/mobility>
 
